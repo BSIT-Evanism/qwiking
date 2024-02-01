@@ -14,6 +14,12 @@ const serverGreet = server$((name: string) => {
   return grt;
 });
 
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+}
+
 export default component$(() => {
   const greet = useSignal("");
   const products = useTestFunction();
@@ -32,7 +38,7 @@ export default component$(() => {
         Submit
       </button>
       <div>
-        {products.value.map((product: any) => (
+        {products.value.map((product: Product) => (
           <div key={product.id}>
             <h3>{product.title}</h3>
             <p>{product.description}</p>
