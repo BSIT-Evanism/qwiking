@@ -1,5 +1,6 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { routeLoader$, server$ } from "@builder.io/qwik-city";
+import { Sonner, QtoastButton } from "~/integrations/react/Sonner";
 
 export const useTestFunction = routeLoader$(async () => {
   const res = await fetch("https://fakestoreapi.com/products?limit=5");
@@ -27,6 +28,7 @@ export default component$(() => {
   return (
     <>
       <div>Home</div>
+      <Sonner />
       <input type="text" placeholder="Input your name" bind:value={greet} />
       <button
         onClick$={async () => {
@@ -42,6 +44,7 @@ export default component$(() => {
           <div key={product.id}>
             <h3>{product.title}</h3>
             <p>{product.description}</p>
+            <QtoastButton productTitle={product.title} />
           </div>
         ))}
       </div>
